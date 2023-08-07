@@ -38,21 +38,38 @@ class App
     case option
     when '1'
       create_item
+      puts 'Selected: Create an Item'
     when '2'
       list_items
+      puts 'Selected: List all items'
     when '3'
       list_genres
+      puts 'Selected: List all genres'
     when '4'
       list_label
+      puts 'Selected: List all labels'
     else
       puts 'That is not a valid option'
     end
   end
 
+  def create_item
+    puts 'Creating an item'
+  end
+
+  def list_items
+    puts 'Listing all items'
+  end
+
+  def list_genres
+    puts 'Listing all genres'
+  end
+
+  def list_label
+    puts 'Listing all label'
+  end
+
   def exit_app
-    save_music_albums
-    save_book
-    save_game
     puts 'Thank you for using this app'
   end
 end
