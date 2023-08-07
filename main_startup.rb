@@ -3,8 +3,6 @@ class App
     @books = []
     @music_albums = []
     @games = []
-    @genres = [Genre.new('Blues'), Genre.new('Classical Music'), Genre.new('Hip hop'), Genre.new('Rap'),
-               Genre.new('Pop'), Genre.new('House')]
 
     @choice_list = {
       '1' => 'Create an Item',
@@ -17,9 +15,6 @@ class App
   end
 
   def run
-    parse_music_albums
-    parse_book
-    parse_game
     puts 'Welcome to the Catalog of your Things'
 
     loop do
@@ -58,6 +53,9 @@ class App
     save_music_albums
     save_book
     save_game
-    puts ' Thank you for using this app'
+    puts 'Thank you for using this app'
   end
 end
+
+app = App.new
+app.run
