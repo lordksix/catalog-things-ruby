@@ -1,10 +1,10 @@
 class App
-
-    def initialize
+  def initialize
     @books = []
     @music_albums = []
     @games = []
-    @genres = [Genre.new('Blues'), Genre.new('Classical Music'), Genre.new('Hip hop'), Genre.new('Rap'), Genre.new('Pop'), Genre.new('House')]
+    @genres = [Genre.new('Blues'), Genre.new('Classical Music'), Genre.new('Hip hop'), Genre.new('Rap'),
+               Genre.new('Pop'), Genre.new('House')]
 
     @choice_list = {
       '1' => 'Create an Item',
@@ -13,7 +13,7 @@ class App
       '4' => 'List all labels.',
       '5' => 'List all authors.',
       '6' => 'Exit'
-    }  
+    }
   end
 
   def run
@@ -24,7 +24,7 @@ class App
 
     loop do
       puts 'Please choose your option by entering a number:'
-     
+
       @choice_list.each do |key, value|
         puts "#{key} - #{value}"
       end
@@ -58,6 +58,6 @@ class App
     save_music_albums
     save_book
     save_game
-     puts " Thank you for using this app"
+    puts ' Thank you for using this app'
   end
 end
