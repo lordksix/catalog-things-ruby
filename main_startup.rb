@@ -31,7 +31,7 @@ class App
       print 'Your option ==> '
       option = gets.chomp
       if option == '6'
-        exit
+        exit_app
         break
       end
 
@@ -54,7 +54,7 @@ class App
     end
   end
 
-  def exit
+  def exit_app
     save_music_albums
     save_book
     save_game
