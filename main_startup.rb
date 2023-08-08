@@ -1,7 +1,7 @@
 require 'json'
 require_relative 'music_album'
 require_relative 'genre'
-require_relative 'item_music'
+require_relative 'item'
 
 class App
   def initialize
@@ -9,7 +9,7 @@ class App
     @music_albums = []
     @games = []
     @genres = [Genre.new('Blues'), Genre.new('Classical'), Genre.new('Hip hop'), Genre.new('Rap'),
-               Genre.new('Pop'), Genre.new('House')]
+               Genre.new('Pop'), Genre.new('Rock')]
 
     @choice_list = {
       '1' => 'List all books',
@@ -41,11 +41,6 @@ class App
   end
 
   def handle_option(option)
-    if option == '11'
-      exit_app
-      return
-    end
-
     case option
     when '2'
       list_music_albums
@@ -53,8 +48,11 @@ class App
       list_all_genres
     when '9'
       add_music_album
+    when '11'
+      exit_app
+    else
+      puts "Selected: #{@choice_list[option]}"
     end
-    puts "Selected: #{@choice_list[option]}"
   end
 
   def display_options
@@ -81,6 +79,15 @@ class App
   end
 
   def add_music_album
+    new_album = create_new_album
+    return unless new_album
+
+    add_album_to_genre(new_album)
+    @music_albums << new_album
+    puts "Added #{new_album.title} by #{new_album.artist} to the list of music albums."
+  end
+
+  def create_new_album
     puts 'Enter the title of the music album:'
     title = gets.chomp
     puts 'Enter the artist:'
@@ -88,10 +95,7 @@ class App
     puts 'Enter the release year:'
     release_year = gets.chomp.to_i
 
-    new_album = MusicAlbum.new(title, artist, release_year)
-    @music_albums << new_album
-
-    add_album_to_genre(new_album)
+    MusicAlbum.new(title, artist, release_year)
   end
 
   def add_album_to_genre(album)
@@ -101,7 +105,7 @@ class App
     genre = find_genre_by_name(genre_name)
     if genre
       genre.add_item(album)
-      puts "Added #{album.title} by #{album.artist} to the list of music albums."
+      album.add_genre(genre)
     else
       puts "Genre '#{genre_name}' not found."
     end
@@ -114,8 +118,24 @@ class App
   def load_music_albums
     return unless File.exist?('music_albums.json')
 
-    json_data = JSON.parse(File.read('music_albums.json'))
-    @music_albums = json_data.map { |data| MusicAlbum.from_json(data) }
+    begin
+      json_data = JSON.parse(File.read('music_albums.json'))
+      @music_albums = json_data.map do |data|
+        album = MusicAlbum.from_json(data)
+        genre_name = data['genre']
+        genre = find_genre_by_name(genre_name)
+        if genre
+          genre.add_item(album)
+          album.add_genre(genre)
+        end
+        album
+      rescue JSON::ParserError => e
+        puts "Error parsing music album data: #{e.message}"
+        nil
+      end.compact 
+    rescue JSON::ParserError => e
+      puts "Error parsing music_albums.json: #{e.message}"
+    end
   end
 
   def save_music_albums
