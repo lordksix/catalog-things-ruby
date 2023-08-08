@@ -9,13 +9,13 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 150
+  Max: 120
 Metrics/MethodLength:
-  Max: 50
+  Max: 30
 Metrics/AbcSize:
-  Max: 50
+  Max: 20
 Metrics/ClassLength:
-  Max: 180
+  Max: 150
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
