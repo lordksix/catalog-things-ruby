@@ -1,3 +1,16 @@
 [
-
+  {
+    "title": "Pretty Woman",
+    "artist": "Roy Orbison",
+    "release_year": 1962,
+    "on_spotify": false,
+    "genre": "Pop"
+  },
+  {
+    "title": "We will Rock You",
+    "artist": "Queen",
+    "release_year": 1977,
+    "on_spotify": false,
+    "genre": "Rock"
+  }
 ]

@@ -121,7 +121,7 @@ class App
     begin
       json_data = JSON.parse(File.read('music_albums.json'))
       @music_albums = json_data.map do |data|
-        album = MusicAlbum.from_json(data)
+        album = MusicAlbum.from_json(data, @genres)
         genre_name = data['genre']
         genre = find_genre_by_name(genre_name)
         if genre
@@ -132,7 +132,7 @@ class App
       rescue JSON::ParserError => e
         puts "Error parsing music album data: #{e.message}"
         nil
-      end.compact 
+      end.compact
     rescue JSON::ParserError => e
       puts "Error parsing music_albums.json: #{e.message}"
     end

@@ -24,13 +24,17 @@ class MusicAlbum
     }
   end
 
-  def self.from_json(json_data)
+  def add_genre(genre)
+    @genre = genre
+  end
+
+  def self.from_json(json_data, genres)
     genre_name = json_data['genre']
-    genre = find_genre_by_name(genre_name)
+    matched_genre = genres.find { |genre_item| genre_item.name == genre_name }
 
     MusicAlbum.new(json_data['title'], json_data['artist'], json_data['release_year']).tap do |album|
       album.on_spotify = json_data['on_spotify']
-      album.add_genre(genre) if genre
+      album.add_genre(matched_genre) if matched_genre
     end
   end
 end
