@@ -1,3 +1,7 @@
+require_relative 'music_album'
+require_relative 'genre'
+require_relative 'item_music'
+
 class App
   def initialize
     @books = []
@@ -38,8 +42,13 @@ class App
       return
     end
 
-    list_items(item_name(option))
-    puts "Selected: List all #{item_name(option)}"
+    case option
+    when '2'
+      list_music_albums
+    when '9'
+      add_music_album
+    end
+    puts "Selected: #{@choice_list[option]}"
   end
 
   def display_options
