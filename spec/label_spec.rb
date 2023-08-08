@@ -1,7 +1,6 @@
 require_relative '../src/label'
 require_relative '../src/book'
 
-
 describe Book do
   before(:each) do
     @new_book = Book.new('cover', 'William Morrow', 1954)

@@ -1,6 +1,5 @@
 require_relative 'src/book'
 
-
 class App
   def initialize
     @books = []
