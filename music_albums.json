@@ -10,5 +10,41 @@
     "artist": "BackStreet Boys",
     "release_year": 2005,
     "on_spotify": false
+  },
+  {
+    "title": "Best of Boyzone",
+    "artist": "Boyzone",
+    "release_year": 2019,
+    "on_spotify": false
+  },
+  {
+    "title": "Best of Jagjit Singh",
+    "artist": "Various Artist",
+    "release_year": 2022,
+    "on_spotify": false
+  },
+  {
+    "title": "Deewana",
+    "artist": "Sonu Nigam",
+    "release_year": 2002,
+    "on_spotify": false
+  },
+  {
+    "title": "Best of Bon Jovi",
+    "artist": "Bon Jovi",
+    "release_year": 2022,
+    "on_spotify": false
+  },
+  {
+    "title": "Best of Ricky Martin",
+    "artist": "Ricky Martin",
+    "release_year": 2006,
+    "on_spotify": false
+  },
+  {
+    "title": "Best of George Benson",
+    "artist": "George Benson",
+    "release_year": 1990,
+    "on_spotify": false
   }
 ]

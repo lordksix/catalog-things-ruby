@@ -8,6 +8,9 @@ class App
     @books = []
     @music_albums = []
     @games = []
+    @genres = []
+    @genres = [Genre.new('Blues'), Genre.new('Classical Music'), Genre.new('Hip hop'), Genre.new('Rap'),
+               Genre.new('Pop'), Genre.new('House')]
 
     @choice_list = {
       '1' => 'List all books',
@@ -46,6 +49,8 @@ class App
     case option
     when '2'
       list_music_albums
+    when '4'
+      list_all_genres
     when '9'
       add_music_album
     end
@@ -88,7 +93,30 @@ class App
     new_album = MusicAlbum.new(title, artist, release_year)
     @music_albums << new_album
 
-    puts "Added #{title} by #{artist} to the list of music albums."
+    puts 'Enter the genre name:'
+    genre_name = gets.chomp
+
+    genre = find_genre_by_name(genre_name)
+    if genre
+      genre.add_item(new_album)
+      puts "Added #{title} by #{artist} to the list of music albums."
+    else
+      puts "Genre '#{genre_name}' not found."
+    end
+  end
+
+  def find_genre_by_name(name)
+    @genres.find { |genre| genre.name == name }
+  end
+
+  def list_all_genres
+    puts 'Listing all genres:'
+    @genres.each_with_index do |genre, index|
+      puts "#{index + 1}. #{genre.name}"
+      genre.items.each_with_index do |item, item_index|
+        puts "   #{item_index + 1}. #{item.title} by #{item.artist} (#{item.release_year})" if item.is_a?(MusicAlbum)
+      end
+    end
   end
 
   def list_music_albums
