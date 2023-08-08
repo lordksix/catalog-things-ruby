@@ -46,5 +46,11 @@
     "artist": "George Benson",
     "release_year": 1990,
     "on_spotify": false
+  },
+  {
+    "title": "Best of Backstreet Boys",
+    "artist": "Backstreet Boys",
+    "release_year": 2005,
+    "on_spotify": false
   }
 ]

@@ -8,8 +8,7 @@ class App
     @books = []
     @music_albums = []
     @games = []
-    @genres = []
-    @genres = [Genre.new('Blues'), Genre.new('Classical Music'), Genre.new('Hip hop'), Genre.new('Rap'),
+    @genres = [Genre.new('Blues'), Genre.new('Classical'), Genre.new('Hip hop'), Genre.new('Rap'),
                Genre.new('Pop'), Genre.new('House')]
 
     @choice_list = {
@@ -25,6 +24,7 @@ class App
       '10' => 'Add a game',
       '11' => 'Exit'
     }
+
     load_music_albums
   end
 
@@ -63,52 +63,6 @@ class App
     print 'Your option ==> '
   end
 
-  def item_name(option)
-    {
-      '1' => 'books',
-      '2' => 'music albums',
-      '3' => 'games'
-    }[option]
-  end
-
-  def list_items(item)
-    puts "Listing all #{item}"
-  end
-
-  def exit_app
-    save_music_albums
-    save_books
-    save_games
-    puts 'Thank you for using this app'
-  end
-
-  def add_music_album
-    puts 'Enter the title of the music album:'
-    title = gets.chomp
-    puts 'Enter the artist:'
-    artist = gets.chomp
-    puts 'Enter the release year:'
-    release_year = gets.chomp.to_i
-
-    new_album = MusicAlbum.new(title, artist, release_year)
-    @music_albums << new_album
-
-    puts 'Enter the genre name:'
-    genre_name = gets.chomp
-
-    genre = find_genre_by_name(genre_name)
-    if genre
-      genre.add_item(new_album)
-      puts "Added #{title} by #{artist} to the list of music albums."
-    else
-      puts "Genre '#{genre_name}' not found."
-    end
-  end
-
-  def find_genre_by_name(name)
-    @genres.find { |genre| genre.name == name }
-  end
-
   def list_all_genres
     puts 'Listing all genres:'
     @genres.each_with_index do |genre, index|
@@ -124,6 +78,37 @@ class App
     @music_albums.each_with_index do |album, index|
       puts "#{index + 1}. #{album.title} by #{album.artist} (#{album.release_year})"
     end
+  end
+
+  def add_music_album
+    puts 'Enter the title of the music album:'
+    title = gets.chomp
+    puts 'Enter the artist:'
+    artist = gets.chomp
+    puts 'Enter the release year:'
+    release_year = gets.chomp.to_i
+
+    new_album = MusicAlbum.new(title, artist, release_year)
+    @music_albums << new_album
+
+    add_album_to_genre(new_album)
+  end
+
+  def add_album_to_genre(album)
+    puts 'Enter the genre name:'
+    genre_name = gets.chomp
+
+    genre = find_genre_by_name(genre_name)
+    if genre
+      genre.add_item(album)
+      puts "Added #{album.title} by #{album.artist} to the list of music albums."
+    else
+      puts "Genre '#{genre_name}' not found."
+    end
+  end
+
+  def find_genre_by_name(name)
+    @genres.find { |genre| genre.name == name }
   end
 
   def load_music_albums
@@ -154,6 +139,13 @@ class App
         file.puts("#{game.title}, #{game.platform}, #{game.release_year}")
       end
     end
+  end
+
+  def exit_app
+    save_music_albums
+    save_books
+    save_games
+    puts 'Thank you for using this app'
   end
 end
 
