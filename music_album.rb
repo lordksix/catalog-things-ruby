@@ -17,11 +17,15 @@ class MusicAlbum < Item
   def to_json(*_args)
     {
       'title' => @title,
+      'artist' => @artist,
+      'release_year' => @release_year,
       'on_spotify' => @on_spotify
     }
   end
 
   def self.from_json(json_data)
-    MusicAlbum.new(json_data['title'], json_data['on_spotify'])
+    MusicAlbum.new(json_data['title'], json_data['artist'], json_data['release_year']).tap do |album|
+      album.on_spotify = json_data['on_spotify']
+    end
   end
 end

@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'music_album'
 require_relative 'genre'
 require_relative 'item_music'
@@ -101,14 +102,13 @@ class App
     return unless File.exist?('music_albums.json')
 
     json_data = JSON.parse(File.read('music_albums.json'))
-    @music_albums = json_data.map { |data| MusicAlbum.new(data['title'], data['artist'], data['release_year']) }
+    @music_albums = json_data.map { |data| MusicAlbum.from_json(data) }
   end
 
   def save_music_albums
-    File.open('music_albums.txt', 'w') do |file|
-      @music_albums.each do |album|
-        file.puts("#{album.title}, #{album.artist}, #{album.release_year}")
-      end
+    File.open('music_albums.json', 'w') do |file|
+      json_data = @music_albums.map(&:to_json)
+      file.puts(JSON.pretty_generate(json_data))
     end
   end
 
