@@ -9,7 +9,7 @@ class Game < Items
 
   private
 
-  def can_be_archieved?
-    can_be_archieved? && Time.new.year - last_played_at > 2
+  def can_be_archived?
+    Time.new.year - publish_date > 10 && Time.new.year - @last_played_at > 2
   end
 end
