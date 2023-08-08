@@ -1,3 +1,6 @@
+require_relative 'src/book'
+
+
 class App
   def initialize
     @books = []
@@ -32,7 +35,13 @@ class App
   end
 
   def handle_option(option)
-    if option == '11'
+    case option
+    when '1'
+      Book.list_books(@books)
+    when '8'
+      puts 'hi'
+      @books << Book.add_book
+    when '11'
       exit_app
       return
     end
@@ -61,7 +70,7 @@ class App
 
   def exit_app
     save_music_albums
-    save_books
+    # save_books
     save_games
     puts 'Thank you for using this app'
   end
