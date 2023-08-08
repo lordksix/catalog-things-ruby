@@ -45,7 +45,6 @@ class Book < Items
     print "What's the cover state of the book? [good/bad] "
     cover_state = gets.chomp.downcase
 
-    puts 'a'
 
     new_book = Book.new(cover_state, publisher, book_date)
     puts "The book '#{cover_state.upcase}' by #{publisher.upcase} was created successfully!"
@@ -70,16 +69,12 @@ class Book < Items
 
 
 
+
   private
 
-  # def can_be_achieved?
-  #   if super | cover_state == 'bad'
-  #     return true
-  #   end
-  #   false
-  # end
+  def can_be_achieved?
+    return true if super | cover_state == 'bad'
 
-  def can_be_archived?
-    super || @cover_state == 'bad'
+    false
   end
 end
