@@ -1,8 +1,10 @@
 require_relative 'game'
 require_relative 'author'
+require_relative 'input_data'
 
-class CreateGame
+class CreateGame < InputData
   def initialize(items)
+    super()
     @games = items
   end
 
@@ -21,22 +23,6 @@ class CreateGame
     new_author.add_item(new_game)
     @games << new_game
     puts "Game by '#{author[0]} #{author[1]}' published in #{game[0]} was added successfully!"
-  end
-
-  def author_details
-    puts "Enter author's first name:"
-    first_name = gets.chomp
-    while first_name.nil?
-      puts "Enter author's first name:"
-      first_name = gets.chomp
-    end
-    puts "Enter author's last name:"
-    last_name = gets.chomp
-    while last_name.nil?
-      puts "Enter author's last name:"
-      last_name = gets.chomp
-    end
-    [first_name, last_name]
   end
 
   def game_details
