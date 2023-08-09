@@ -97,9 +97,7 @@ class App
   def save_books
     File.open('books.txt', 'w') do |file|
       @books.each do |book|
-        file.puts("#{book.title}, #{book.
-        
-        }, #{book.published_year}")
+        file.puts("#{book.title}, #{book.author}, #{book.published_year}")
       end
     end
   end
