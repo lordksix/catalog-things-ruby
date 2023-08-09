@@ -1,4 +1,15 @@
-module AddMusic
+class CreateMusic < Input
+  def initialize(items)
+    super()
+    @music_albums = items
+  end
+
+  def handle
+    add_music_album
+  end
+
+  private
+
   def add_music
     publish_date = input_date
     on_spotify = input_on_spotify
