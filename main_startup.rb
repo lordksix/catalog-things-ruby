@@ -70,7 +70,7 @@ class App
   def exit_app
     save_music_albums
     save_books
-    save_games
+    # save_games
     puts 'Thank you for using this app'
   end
 
@@ -103,7 +103,8 @@ class App
   def list_games
     puts 'List of all games'
     @games.each_with_index do |game, index|
-      puts "\n[#{index + 1}] (ID:#{game.id}) This game has been published in #{game.publish_date}"
+      puts "\n[#{index + 1}] (ID:#{game.id})
+        This game by #{game.author.last_name.upcase} has been published in '#{game.publish_date}'"
     end
   end
 
@@ -115,7 +116,7 @@ class App
     new_author = Author.new(author[0], author[0])
     new_author.add_item(new_game)
     @games << new_game
-    puts "Game by '#{author[0]}' '#{author[1]}' published in '#{game[0]}' was added successfully!"
+    puts "Game by '#{author[0]} #{author[1]}' published in #{game[0]} was added successfully!"
   end
 
   def author_details
@@ -153,6 +154,7 @@ class App
       puts msg
       year = gets.chomp.to_i
     end
+    year
   end
 end
 
