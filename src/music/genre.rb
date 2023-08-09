@@ -12,11 +12,4 @@ class Genre
     @items << item
     item.add_genre(self)
   end
-
-  def to_hash
-    {
-      'id' => @id,
-      'name' => @name
-    }
-  end
 end
