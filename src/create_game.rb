@@ -8,7 +8,7 @@ class CreateGame < InputData
     @games = items
   end
 
-  def create
+  def handle
     add_game
   end
 
