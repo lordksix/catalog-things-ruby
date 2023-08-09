@@ -36,6 +36,8 @@ class App
 
   def handle_option(option)
     case option
+    when '3'
+      list_games
     when '10'
       add_game
     when '11'
@@ -105,6 +107,7 @@ class App
     new_game = Game.new(game[0], game[1], game[2])
     new_author = Author.new(author[0], author[0])
     new_author.add_item(new_game)
+    @games << new_game
     puts "Game by '#{author[0]}' '#{author[1]}' published in '#{game[0]}' was added successfully!"
   end
 
