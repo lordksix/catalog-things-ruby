@@ -1,6 +1,7 @@
 require_relative 'src/game'
 require_relative 'src/author'
 require_relative 'src/create_game'
+require_relative 'src/create_book'
 require_relative 'src/book'
 require_relative 'src/label'
 
@@ -38,27 +39,57 @@ class App
   end
 
   def handle_option(option)
-    case option
-    when '1'
-      list_books
-    when '3'
-      list_games
-    when '5'
-      list_labels @books, @music_albums, @games
-    when '6'
-      list_authors @books, @music_albums, @games
-    when '8'
-      @books << add_books
-    when '10'
-      new_game = CreateGame.new(@games)
-      new_game.create
-    when '11'
-      exit_app
-      return
-    end
+    options = {
+      '1' => method(:handle_option_one),
+      '3' => method(:handle_option_three),
+      '5' => method(:handle_option_five),
+      '6' => method(:handle_option_six),
+      '8' => method(:handle_option_eight),
+      '10' => method(:handle_option_ten),
+      '11' => method(:handle_option_eleven)
+    }
 
-    list_items(item_name(option))
-    puts "Selected: List all #{item_name(option)}"
+    action = options[option]
+    if action
+      action.call
+      list_items(item_name(option))
+      puts "Selected: List all #{item_name(option)}"
+    else
+      puts 'Invalid option'
+    end
+  end
+
+  # Define the individual option handlers as separate methods
+
+  def handle_option_one
+    list_books
+  end
+
+  def handle_option_three
+    list_games
+  end
+
+  def handle_option_five
+    list_labels(@books, @music_albums, @games)
+  end
+
+  def handle_option_six
+    list_authors(@books, @music_albums, @games)
+  end
+
+  def handle_option_eight
+    new_book = CreateBook.new(@books)
+    new_book.create
+  end
+
+  def handle_option_ten
+    new_game = CreateGame.new(@games)
+    new_game.create
+  end
+
+  def handle_option_eleven
+    exit_app
+    nil
   end
 
   def display_options
@@ -97,9 +128,7 @@ class App
   def save_books
     File.open('books.txt', 'w') do |file|
       @books.each do |book|
-        file.puts("#{book.title}, #{book.
-        
-        }, #{book.published_year}")
+        file.puts("#{book.title}, #{book.author}, #{book.published_year}")
       end
     end
   end
