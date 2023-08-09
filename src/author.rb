@@ -1,6 +1,9 @@
 require_relative 'game'
 
 class Author
+  attr_accessor :first_name, :last_name
+  attr_reader :id, :items
+
   def initialize(first_name, last_name)
     @id = rand(1_000_000)
     @first_name = first_name
@@ -13,7 +16,3 @@ class Author
     item.add_author(self)
   end
 end
-
-newauthor = Author.new('andres', 'maldonado')
-newgame = Game.new(2015, true, 2020)
-newauthor.add_item(newgame)

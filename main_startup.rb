@@ -1,3 +1,6 @@
+require_relative 'src/game'
+require_relative 'src/author'
+require_relative 'src/create_game'
 require_relative 'src/book'
 require_relative 'src/label'
 
@@ -38,11 +41,17 @@ class App
     case option
     when '1'
       list_books
-
+    when '3'
+      list_games
     when '5'
       list_labels @books, @music_albums, @games
+    when '6'
+      list_authors @books, @music_albums, @games
     when '8'
       @books << add_books
+    when '10'
+      new_game = CreateGame.new(@games)
+      new_game.create
     when '11'
       exit_app
       return
@@ -72,8 +81,8 @@ class App
 
   def exit_app
     save_music_albums
-    # save_books
-    save_games
+    # save_games
+    # save_book1
     puts 'Thank you for using this app'
   end
 
@@ -88,7 +97,9 @@ class App
   def save_books
     File.open('books.txt', 'w') do |file|
       @books.each do |book|
-        file.puts("#{book.title}, #{book.author}, #{book.published_year}")
+        file.puts("#{book.title}, #{book.
+        
+        }, #{book.published_year}")
       end
     end
   end
@@ -98,6 +109,34 @@ class App
       @games.each do |game|
         file.puts("#{game.title}, #{game.platform}, #{game.release_year}")
       end
+    end
+  end
+
+  private
+
+  def list_authors(_books, _music_albums, _games)
+    authors = []
+    @books.each do |book|
+      authors << book.author
+    end
+
+    @music_albums.each do |music_album|
+      authors << music_album.author
+    end
+
+    @games.each do |game|
+      authors << game.author
+    end
+    authors.each_with_index do |author, index|
+      puts "[#{index + 1}] (ID: #{author.id}) Name: #{author.last_name.upcase}, #{author.first_name}"
+    end
+  end
+
+  def list_games
+    puts 'List of all games'
+    @games.each_with_index do |game, index|
+      puts "\n[#{index + 1}] (ID:#{game.id})
+        This game by #{game.author.last_name.upcase} has been published in '#{game.publish_date}'"
     end
   end
 end
