@@ -1,5 +1,6 @@
 require_relative 'src/game'
 require_relative 'src/author'
+require_relative 'src/create_game'
 
 class App
   def initialize
@@ -38,8 +39,11 @@ class App
     case option
     when '3'
       list_games
+    when '6'
+      list_authors
     when '10'
-      add_game
+      new_game = CreateGame.new(@games)
+      new_game.create
     when '11'
       exit_app
       return
@@ -100,61 +104,29 @@ class App
 
   private
 
+  def list_authors(books, music_albums, games)
+    authors = []
+    books.each do |book|
+      authors << book.author
+    end
+    music_albums.each do |music_album|
+      authors << music_album.author
+    end
+
+    games.each do |game|
+      authors << game.author
+    end
+    authors.each_with_index do |author, index|
+      puts "[#{index + 1}] (ID: #{author.id}) Name: #{author.last_name.upcase}, #{author.first_name}"
+    end
+  end
+
   def list_games
     puts 'List of all games'
     @games.each_with_index do |game, index|
       puts "\n[#{index + 1}] (ID:#{game.id})
         This game by #{game.author.last_name.upcase} has been published in '#{game.publish_date}'"
     end
-  end
-
-  def add_game
-    puts "Input game's information"
-    author = author_details
-    game = game_details
-    new_game = Game.new(game[0], game[1], game[2])
-    new_author = Author.new(author[0], author[0])
-    new_author.add_item(new_game)
-    @games << new_game
-    puts "Game by '#{author[0]} #{author[1]}' published in #{game[0]} was added successfully!"
-  end
-
-  def author_details
-    puts "Enter author's first name:"
-    first_name = gets.chomp
-    while first_name.nil?
-      puts "Enter author's first name:"
-      first_name = gets.chomp
-    end
-    puts "Enter author's last name:"
-    last_name = gets.chomp
-    while last_name.nil?
-      puts "Enter author's last name:"
-      last_name = gets.chomp
-    end
-    [first_name, last_name]
-  end
-
-  def game_details
-    publish_date = get_year("Enter game's year of publication:")
-    last_played_at = get_year('Enter last time (year) it was played:')
-    puts 'Is it Multiplayer? (Y/N)'
-    multiplayer = gets.chomp.downcase
-    while multiplayer != 'y' && multiplayer != 'n'
-      puts 'Is it Multiplayer? (Y/N)'
-      multiplayer = gets.chomp.downcase
-    end
-    [publish_date, multiplayer == 'y', last_played_at]
-  end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
   end
 end
 
