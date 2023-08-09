@@ -66,7 +66,7 @@ class App
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
       genre.items.each_with_index do |item, item_index|
-        puts "   #{item_index + 1}. #{item.title} by #{item.artist} (#{item.release_year})" if item.is_a?(MusicAlbum)
+        puts "   #{item_index + 1}.  (#{item.release_year})" if item.is_a?(MusicAlbum)
       end
     end
   end
@@ -74,7 +74,7 @@ class App
   def list_music_albums
     puts 'Listing all music albums:'
     @music_albums.each_with_index do |album, index|
-      puts "#{index + 1}. #{album.title} by #{album.artist} (#{album.release_year})"
+      puts "#{index + 1}. (#{album.release_year})"
     end
   end
 
@@ -82,32 +82,27 @@ class App
     new_album = create_new_album
     return unless new_album
 
-    add_album_to_genre(new_album)
     @music_albums << new_album
-    puts "Added #{new_album.title} by #{new_album.artist} to the list of music albums."
+    puts "Added #{new_album.name} to the list of music albums."
   end
 
   def create_new_album
-    puts 'Enter the title of the music album:'
-    title = gets.chomp
-    puts 'Enter the artist:'
-    artist = gets.chomp
+    puts 'Enter the music album name:'
+    name = gets.chomp
     puts 'Enter the release year:'
     release_year = gets.chomp.to_i
 
-    MusicAlbum.new(title, artist, release_year)
-  end
-
-  def add_album_to_genre(album)
     puts 'Enter the genre name:'
     genre_name = gets.chomp
-
     genre = find_genre_by_name(genre_name)
+
     if genre
-      genre.add_item(album)
-      album.add_genre(genre)
+      new_album = MusicAlbum.new(name, release_year)
+      new_album.add_genre(genre)
+      new_album
     else
       puts "Genre '#{genre_name}' not found."
+      nil
     end
   end
 
@@ -166,6 +161,10 @@ class App
     save_books
     save_games
     puts 'Thank you for using this app'
+  end
+
+  def find_property_by_name(name, propety)
+    propety.find { |elem| elem.name == name }
   end
 end
 

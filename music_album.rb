@@ -1,11 +1,10 @@
 require_relative 'item'
 
 class MusicAlbum
-  attr_accessor :on_spotify, :release_year, :artist, :title, :genre
+  attr_accessor :on_spotify, :release_year, :genre, :name
 
-  def initialize(title, artist, release_year)
-    @title = title
-    @artist = artist
+  def initialize(name, release_year)
+    @name = name
     @release_year = release_year
     @on_spotify = false
   end
@@ -16,8 +15,7 @@ class MusicAlbum
 
   def to_json(*_args)
     {
-      'title' => @title,
-      'artist' => @artist,
+      'name' => @name,
       'release_year' => @release_year,
       'on_spotify' => @on_spotify,
       'genre' => @genre.name
@@ -32,7 +30,7 @@ class MusicAlbum
     genre_name = json_data['genre']
     matched_genre = genres.find { |genre_item| genre_item.name == genre_name }
 
-    MusicAlbum.new(json_data['title'], json_data['artist'], json_data['release_year']).tap do |album|
+    MusicAlbum.new(json_data['name'], json_data['release_year']).tap do |album|
       album.on_spotify = json_data['on_spotify']
       album.add_genre(matched_genre) if matched_genre
     end

@@ -10,8 +10,4 @@ class Genre
     @items.push(item)
     item.genre = self if item.respond_to?(:genre=)
   end
-
-  def self.find_genre_by_name(name, genres)
-    genres.find { |genre| genre.name == name }
-  end
 end

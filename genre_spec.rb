@@ -12,7 +12,7 @@ RSpec.describe Genre do
     end
 
     it 'sets the genre property of the added item' do
-      item = MusicAlbum.new('Album Title', 'Artist Name', 2023)
+      item = MusicAlbum.new('Album Title', 2023)
       genre.add_item(item)
       expect(item.genre).to eq(genre)
     end
