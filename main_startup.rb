@@ -4,6 +4,7 @@ require_relative 'src/create_game'
 require_relative 'src/create_book'
 require_relative 'src/book'
 require_relative 'src/label'
+require 'json'
 
 class App
   def initialize

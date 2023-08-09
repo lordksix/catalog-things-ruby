@@ -7,6 +7,20 @@ class Game < Items
     @last_played_at = last_played_at
   end
 
+  def to_hash
+    {
+      id: @id,
+      multiplayer: @multiplayer,
+      publish_date: @publish_date,
+      archived: @archived,
+      last_played_at: @last_played_at
+    }
+  end
+
+  def to_json(*_args)
+    to_hash.to_json
+  end
+
   private
 
   def can_be_archived?
