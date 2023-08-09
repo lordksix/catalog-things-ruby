@@ -156,6 +156,5 @@ def list_labels(_books, _music_albums, _games)
   end
 end
 
-
 app = App.new
 app.run
