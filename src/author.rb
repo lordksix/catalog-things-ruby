@@ -1,6 +1,9 @@
 require_relative 'game'
 
 class Author
+  attr_accessor :first_name, :last_name
+  attr_reader :id, :items
+
   def initialize(first_name, last_name)
     @id = rand(1_000_000)
     @first_name = first_name
