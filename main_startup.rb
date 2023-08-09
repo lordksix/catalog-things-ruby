@@ -40,7 +40,7 @@ class App
     when '3'
       list_games
     when '6'
-      list_authors
+      list_authors @books, @music_albums, @games
     when '10'
       new_game = CreateGame.new(@games)
       new_game.create
@@ -104,16 +104,17 @@ class App
 
   private
 
-  def list_authors(books, music_albums, games)
+  def list_authors(_books, _music_albums, _games)
     authors = []
-    books.each do |book|
+    @books.each do |book|
       authors << book.author
     end
-    music_albums.each do |music_album|
+
+    @music_albums.each do |music_album|
       authors << music_album.author
     end
 
-    games.each do |game|
+    @games.each do |game|
       authors << game.author
     end
     authors.each_with_index do |author, index|
