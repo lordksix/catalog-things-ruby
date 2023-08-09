@@ -66,7 +66,7 @@ class App
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre.name}"
       genre.items.each_with_index do |item, item_index|
-        puts "   #{item_index + 1}.  (#{item.release_year})" if item.is_a?(MusicAlbum)
+        puts "   #{item_index + 1}.   #{item.name} (#{item.release_year})" if item.is_a?(MusicAlbum)
       end
     end
   end
@@ -74,7 +74,7 @@ class App
   def list_music_albums
     puts 'Listing all music albums:'
     @music_albums.each_with_index do |album, index|
-      puts "#{index + 1}. (#{album.release_year})"
+      puts "#{index + 1}. #{album.name} (#{album.release_year})"
     end
   end
 

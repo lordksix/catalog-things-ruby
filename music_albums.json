@@ -16,5 +16,17 @@
     "release_year": 2023,
     "on_spotify": false,
     "genre": "Blues"
+  },
+  {
+    "name": "Backstreet Boys",
+    "release_year": 1998,
+    "on_spotify": false,
+    "genre": "Pop"
+  },
+  {
+    "name": "2",
+    "release_year": 2000,
+    "on_spotify": false,
+    "genre": "Rock"
   }
 ]
