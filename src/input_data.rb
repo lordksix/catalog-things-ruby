@@ -14,4 +14,12 @@ class InputData
     end
     [first_name, last_name]
   end
+
+  def label_details
+    print 'Enter Title of the Book: '
+    label_title = gets.chomp
+    print 'Type the color of the Book: '
+    label_color = gets.chomp
+    [label_title, label_color]
+  end
 end
