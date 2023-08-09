@@ -19,7 +19,7 @@ class CreateGame < InputData
     author = author_details
     game = game_details
     new_game = Game.new(game[0], game[1], game[2])
-    new_author = Author.new(author[0], author[0])
+    new_author = Author.new(author[0], author[1])
     new_author.add_item(new_game)
     @games << new_game
     puts "Game by '#{author[0]} #{author[1]}' published in #{game[0]} was added successfully!"
