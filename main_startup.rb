@@ -100,6 +100,13 @@ class App
 
   private
 
+  def list_games
+    puts 'List of all games'
+    @games.each_with_index do |game, index|
+      puts "\n[#{index + 1}] (ID:#{game.id}) This game has been published in #{game.publish_date}"
+    end
+  end
+
   def add_game
     puts "Input game's information"
     author = author_details
