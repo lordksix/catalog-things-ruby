@@ -1,7 +1,7 @@
 require_relative 'item'
 
 class MusicAlbum
-  attr_accessor :on_spotify, :release_year, :artist, :title
+  attr_accessor :on_spotify, :release_year, :artist, :title, :genre
 
   def initialize(title, artist, release_year)
     @title = title
@@ -11,7 +11,7 @@ class MusicAlbum
   end
 
   def can_be_archived?
-    super && @on_spotify
+    super_can_be_archived? && @on_spotify
   end
 
   def to_json(*_args)
