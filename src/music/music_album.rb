@@ -14,8 +14,3 @@ class MusicAlbum < Items
     super() && @on_spotify
   end
 end
-
-music = MusicAlbum.new(true, 2000)
-puts music.move_to_archive
-genre = Genre.new('abc')
-puts genre.add_item(music)

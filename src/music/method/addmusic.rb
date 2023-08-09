@@ -1,4 +1,8 @@
-class CreateMusic < Input
+require_relative '../../Genre'
+require_relative '../../MusicAlbum'
+require_relative '../../input_data'
+
+class CreateMusic < InputData
   def initialize(items)
     super()
     @music_albums = items

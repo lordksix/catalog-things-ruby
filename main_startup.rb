@@ -6,6 +6,11 @@ require_relative 'src/book'
 require_relative 'src/label'
 require_relative 'src/list_author'
 require_relative 'src/game_file_handler'
+require_relative 'src/music/music_album'
+require_relative 'src/music/genre'
+require_relative 'src/music/method/addmusic'
+require_relative 'src/music/method/displaymusic'
+require_relative 'src/music/method/displaygenre'
 require 'json'
 
 class App
