@@ -13,7 +13,9 @@ class Game < Items
       multiplayer: @multiplayer,
       publish_date: @publish_date,
       archived: @archived,
-      last_played_at: @last_played_at
+      last_played_at: @last_played_at,
+      first_name: @author.first_name,
+      last_name: @author.last_name
     }
   end
 
