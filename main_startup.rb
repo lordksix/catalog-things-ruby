@@ -4,6 +4,8 @@ require_relative 'src/create_game'
 require_relative 'src/create_book'
 require_relative 'src/book'
 require_relative 'src/label'
+require_relative 'src/list_author'
+require_relative 'src/game_file_handler'
 require 'json'
 
 class App
@@ -29,6 +31,7 @@ class App
 
   def run
     puts 'Welcome to the Catalog of your Things'
+    load_data_from_files
     loop do
       display_options
       option = gets.chomp
@@ -37,6 +40,11 @@ class App
       handle_option(option)
     end
     exit_app
+  end
+
+  def load_data_from_files
+    game_parse = GamesFilesHandler.new(@games)
+    @games = game_parse.parse_games
   end
 
   def handle_option(option)
@@ -75,7 +83,8 @@ class App
   end
 
   def handle_option_six
-    list_authors(@books, @music_albums, @games)
+    new_list = ListAuthorHandler.new(@books, @music_albums, @games)
+    new_list.handle
   end
 
   def handle_option_eight
@@ -85,7 +94,7 @@ class App
 
   def handle_option_ten
     new_game = CreateGame.new(@games)
-    new_game.create
+    new_game.handle
   end
 
   def handle_option_eleven
@@ -113,7 +122,8 @@ class App
 
   def exit_app
     save_music_albums
-    # save_games
+    savegame = GamesFilesHandler.new(@games)
+    savegame.save_games
     # save_book1
     puts 'Thank you for using this app'
   end
@@ -135,31 +145,33 @@ class App
   end
 
   def save_games
-    File.open('games.txt', 'w') do |file|
-      @games.each do |game|
-        file.puts("#{game.title}, #{game.platform}, #{game.release_year}")
-      end
-    end
+    File.write('games.json', save_attr('games', @games))
   end
 
   private
 
-  def list_authors(_books, _music_albums, _games)
-    authors = []
-    @books.each do |book|
-      authors << book.author
-    end
+  def save_attr(item, array_items)
+    JSON.dump({ item => array_items.to_json })
+  end
 
-    @music_albums.each do |music_album|
-      authors << music_album.author
+  def parse_games
+    parse_games = []
+    temp_games = begin
+      JSON.parse(JSON.parse(File.read('games.json'))['games'])
+    rescue StandardError
+      []
     end
-
-    @games.each do |game|
-      authors << game.author
+    if temp_games.empty?
+      parse_games = temp_books
+    else
+      temp_games.each do |game|
+        temp_game = Game.new(game['publish_date'], game['publish_date'], game['last_played_at'])
+        temp_author = Author.new(game['first_name'], game['last_name'])
+        temp_author.add_item(temp_game)
+        parse_games << temp_game
+      end
     end
-    authors.each_with_index do |author, index|
-      puts "[#{index + 1}] (ID: #{author.id}) Name: #{author.last_name.upcase}, #{author.first_name}"
-    end
+    parse_games
   end
 
   def list_games
@@ -175,37 +187,6 @@ def list_books
   @books.each_with_index do |book, index|
     puts "\n[#{index + 1}] (ID:#{book.id}) The book: #{book.label.title} has been published in #{book.publish_date}"
   end
-end
-
-def add_books
-  label_title, label_color, publisher, book_date, cover_state = book_details
-
-  new_book = Book.new(cover_state, publisher, book_date)
-  puts "The book '#{cover_state.upcase}' by #{publisher.upcase} was created successfully!"
-
-  new_label = Label.new(label_title, label_color)
-  new_label.add_item(new_book)
-
-  new_book
-end
-
-private
-
-def book_details
-  print 'Enter Title of the Book: '
-  label_title = gets.chomp
-  print 'Type the color of the Book: '
-  label_color = gets.chomp
-  print "\nWhat's the name of the publisher?"
-  print "\nAnswer: "
-  publisher = gets.chomp
-  print 'What\s the publishing date? [year]'
-  print "\nAnswer: "
-  book_date = gets.chomp.to_i
-  print "What's the cover state of the book? [good/bad] "
-  cover_state = gets.chomp.downcase
-
-  [label_title, label_color, publisher, book_date, cover_state]
 end
 
 def list_labels(_books, _music_albums, _games)
