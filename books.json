@@ -1,0 +1,35 @@
+[
+  {
+    "publish_date": 2005,
+    "cover_state": "good",
+    "publisher": "J.K.Rowling",
+    "id": 32298,
+    "label": {
+      "title": "Harry Potter",
+      "id": 566844158,
+      "color": "Black"
+    }
+  },
+  {
+    "publish_date": 0,
+    "cover_state": "d",
+    "publisher": "d",
+    "id": 137461,
+    "label": {
+      "title": "d",
+      "id": 881394558,
+      "color": "d"
+    }
+  },
+  {
+    "publish_date": 1000,
+    "cover_state": "bad",
+    "publisher": "efdf",
+    "id": 586553,
+    "label": {
+      "title": "Game of Thrones",
+      "id": 18861385,
+      "color": "red"
+    }
+  }
+]

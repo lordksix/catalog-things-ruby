@@ -1,0 +1,29 @@
+[
+  {
+    "publish_date": 2014,
+    "on_spotify": true,
+    "id": 287,
+    "genre": {
+      "name": "Electro",
+      "id": 219080
+    }
+  },
+  {
+    "publish_date": 2023,
+    "on_spotify": false,
+    "id": 985637,
+    "genre": {
+      "name": "MR",
+      "id": 62738
+    }
+  },
+  {
+    "publish_date": 0,
+    "on_spotify": false,
+    "id": 375128,
+    "genre": {
+      "name": "d",
+      "id": 820839
+    }
+  }
+]
