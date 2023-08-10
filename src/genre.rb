@@ -3,6 +3,7 @@ class Genre
   attr_accessor :items, :genre
 
   def initialize(name)
+    @id = rand(1_000_000)
     @name = name
     @items = []
   end
