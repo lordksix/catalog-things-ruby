@@ -15,7 +15,7 @@ class BooksFilesHandler
     books_file.close
     data.map do |book|
       new_book = Book.new(book['cover_state'], book['publisher'], book['publish_date'], book['id'])
-      new_label = Label.new(book['label']['title'], book['label']['color'])
+      new_label = Label.new(book['label']['title'], book['label']['color'], book['label']['id'])
       new_label.add_item(new_book)
       new_book
     end

@@ -15,7 +15,7 @@ class MusicsFilesHandler
     music_albums_file.close
     data.map do |music_album|
       new_music_album = MusicAlbum.new(music_album['on_spotify'], music_album['publish_date'], music_album['id'])
-      new_genre = Genre.new(music_album['genre']['name'])
+      new_genre = Genre.new(music_album['genre']['name'], music_album['genre']['id'])
       new_genre.add_item(new_music_album)
       new_music_album
     end
