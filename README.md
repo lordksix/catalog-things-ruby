@@ -1,6 +1,12 @@
 <a name="readme-top"></a>
+<div align="center">
+    <img src="./assets/lordksix-logos_transparent.png" alt="logo" width="240"  height="auto" margin="auto"/>
+    <br/>
+    <h1><b>Catalog of my things</b></h1>
+    <br/>
+    <img src="./assets/catalog_of_my_things.png" alt="logo" width="400"  height="auto" margin="auto"/>
+</div>
 
-<h1><b>Catalog of my things</b></h1>
 <p>This project, We built a console application we the user can create, list, save and load movies, books and music albums.</p>
 </div>
 
