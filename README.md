@@ -37,6 +37,8 @@
 
 \*_Catalog of my things_ is a console application we the user can create, list, save and load movies, books and music albums.
 
+For a quick video explain of the code, click [here](https://drive.google.com/file/d/1Ur3piLU3lH2147Ins_HjxZokIx69eqqh/view?usp=sharing)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
