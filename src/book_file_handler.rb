@@ -7,38 +7,12 @@ class BooksFilesHandler
     @books = books
   end
 
-  # def parse_books
-  #   array_books = []
-
-
-  #   return array_books unless File.exist?('./books.json')
-
-
-  #   books_file = File.open('./books.json')
-  #   data = JSON.parse(books_file.read)
-
-  #   p data
-
-  #   data.each do |book|
-  #     new_book = Book.new(book['cover_state'], book['publisher'], book['publish_date'], book['id'])
-
-  #     new_label = Label.new(book['label']['title'], book['label']['color'])
-  #     new_label.add_item(new_book)
-
-  #     array_books << new_book
-  #   end
-
-  #   books_file.close
-  #   array_books
-  # end
-
   def parse_books
     return [] unless File.exist?('./books.json')
 
     books_file = File.open('./books.json')
     data = JSON.parse(books_file.read)
     books_file.close
-
     data.map do |book|
       new_book = Book.new(book['cover_state'], book['publisher'], book['publish_date'], book['id'])
       new_label = Label.new(book['label']['title'], book['label']['color'])

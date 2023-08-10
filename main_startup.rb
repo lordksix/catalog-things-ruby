@@ -152,8 +152,6 @@ class App
     savegame = GamesFilesHandler.new(@games)
     savegame.save_games
     # save_book1
-
-
     savebook = BooksFilesHandler.new(@books)
     savebook.save_books
     puts 'Thank you for using this app'
