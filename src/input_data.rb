@@ -22,4 +22,10 @@ class InputData
     label_color = gets.chomp
     [label_title, label_color]
   end
+
+  def genre_details
+    print 'Enter the music album\'s genre: '
+    genre_name = gets.chomp
+    [genre_name]
+  end
 end
