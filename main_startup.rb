@@ -2,6 +2,7 @@ require_relative 'src/game'
 require_relative 'src/author'
 require_relative 'src/create_game'
 require_relative 'src/create_book'
+require_relative 'src/create_music'
 require_relative 'src/book'
 require_relative 'src/label'
 require_relative 'src/list_author'
@@ -50,10 +51,12 @@ class App
   def handle_option(option)
     options = {
       '1' => method(:handle_option_one),
+      '2' => method(:handle_option_two),
       '3' => method(:handle_option_three),
       '5' => method(:handle_option_five),
       '6' => method(:handle_option_six),
       '8' => method(:handle_option_eight),
+      '9' => method(:handle_option_nine),
       '10' => method(:handle_option_ten),
       '11' => method(:handle_option_eleven)
     }
@@ -74,6 +77,10 @@ class App
     list_books
   end
 
+  def handle_option_two
+    list_musics
+  end
+
   def handle_option_three
     list_games
   end
@@ -90,6 +97,11 @@ class App
   def handle_option_eight
     new_book = CreateBook.new(@books)
     new_book.create
+  end
+
+  def handle_option_nine
+    new_music = CreateMusic.new(@music_albums)
+    new_music.create
   end
 
   def handle_option_ten
@@ -121,19 +133,11 @@ class App
   end
 
   def exit_app
-    save_music_albums
+    # save_music_albums
     savegame = GamesFilesHandler.new(@games)
     savegame.save_games
     # save_book1
     puts 'Thank you for using this app'
-  end
-
-  def save_music_albums
-    File.open('music_albums.txt', 'w') do |file|
-      @music_albums.each do |album|
-        file.puts("#{album.title}, #{album.artist}, #{album.release_year}")
-      end
-    end
   end
 
   def save_books
@@ -158,6 +162,12 @@ end
 def list_books
   @books.each_with_index do |book, index|
     puts "\n[#{index + 1}] (ID:#{book.id}) The book: #{book.label.title} has been published in #{book.publish_date}"
+  end
+end
+
+def list_musics
+  @music_albums.each_with_index do |music, index|
+    puts "\n[#{index + 1}] (ID:#{music.id}) The Music: #{music.genre.name} has been published in #{music.publish_date}"
   end
 end
 
