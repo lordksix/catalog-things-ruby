@@ -21,3 +21,15 @@ CREATE TABLE authors (
   last_name VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE music_albums (
+  item_id INTEGER PRIMARY KEY,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  CONSTRAINT fk_music_items FOREIGN KEY (item_id) REFERENCES items(id)
+  CONSTRAINT fk_music_genre  FOREIGN key (genre_id) REFERENCES genres(id)
+);
+
+CREATE TABLE genres (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
