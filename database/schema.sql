@@ -15,6 +15,19 @@ CREATE TABLE authors (
   last_name VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE music_albums (
+  item_id INTEGER PRIMARY KEY,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  publish_date DATE NOT NULL,
+  CONSTRAINT fk_music_genre  FOREIGN key (genre_id) REFERENCES genres(id)
+);
+
+CREATE TABLE genres (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE labels(
     id INT GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(50),
@@ -32,4 +45,5 @@ CREATE TABLE books(
     PRIMARY KEY(id),
     CONSTRAINT fk_labels FOREIGN KEY(books_id) REFERENCES labels(id)
 );
+
 
