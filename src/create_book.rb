@@ -36,14 +36,4 @@ class CreateBook < InputData
     cover_state = gets.chomp.downcase
     [cover_state, publisher, book_date]
   end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
-  end
 end

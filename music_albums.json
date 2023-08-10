@@ -5,7 +5,7 @@
     "id": 287,
     "genre": {
       "name": "Electro",
-      "id": 966298
+      "id": 135963
     }
   },
   {
@@ -14,7 +14,16 @@
     "id": 985637,
     "genre": {
       "name": "MR",
-      "id": 44794
+      "id": 118614
+    }
+  },
+  {
+    "publish_date": 0,
+    "on_spotify": false,
+    "id": 375128,
+    "genre": {
+      "name": "d",
+      "id": 256825
     }
   }
 ]

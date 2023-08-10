@@ -40,14 +40,4 @@ class CreateMusic < InputData
                     end
     [is_on_spotify, music_album_date]
   end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
-  end
 end

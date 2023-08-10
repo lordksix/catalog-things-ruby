@@ -6,8 +6,19 @@
     "id": 32298,
     "label": {
       "title": "Harry Potter",
-      "id": 865124008,
+      "id": 794909171,
       "color": "Black"
+    }
+  },
+  {
+    "publish_date": 0,
+    "cover_state": "d",
+    "publisher": "d",
+    "id": 137461,
+    "label": {
+      "title": "d",
+      "id": 136766801,
+      "color": "d"
     }
   }
 ]
