@@ -24,11 +24,10 @@ class App
       '4' => 'List all genres',
       '5' => 'List all labels',
       '6' => 'List all authors',
-      '7' => 'List all sources',
-      '8' => 'Add a book',
-      '9' => 'Add a music album',
-      '10' => 'Add a game',
-      '11' => 'Exit'
+      '7' => 'Add a book',
+      '8' => 'Add a music album',
+      '9' => 'Add a game',
+      '10' => 'Exit'
     }
   end
 
@@ -38,7 +37,7 @@ class App
     loop do
       display_options
       option = gets.chomp
-      break if option == '11'
+      break if option == '10'
 
       handle_option(option)
     end
@@ -58,10 +57,10 @@ class App
       '4' => method(:handle_option_four),
       '5' => method(:handle_option_five),
       '6' => method(:handle_option_six),
+      '7' => method(:handle_option_seven),
       '8' => method(:handle_option_eight),
       '9' => method(:handle_option_nine),
-      '10' => method(:handle_option_ten),
-      '11' => method(:handle_option_eleven)
+      '10' => method(:handle_option_ten)
     }
 
     action = options[option]
@@ -103,22 +102,22 @@ class App
     new_list.handle
   end
 
-  def handle_option_eight
+  def handle_option_seven
     new_book = CreateBook.new(@books)
     new_book.create
   end
 
-  def handle_option_nine
+  def handle_option_eight
     new_music = CreateMusic.new(@music_albums)
     new_music.create
   end
 
-  def handle_option_ten
+  def handle_option_nine
     new_game = CreateGame.new(@games)
     new_game.handle
   end
 
-  def handle_option_eleven
+  def handle_option_ten
     exit_app
     nil
   end
