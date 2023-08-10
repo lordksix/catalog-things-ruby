@@ -20,5 +20,16 @@
       "id": 881394558,
       "color": "d"
     }
+  },
+  {
+    "publish_date": 1000,
+    "cover_state": "bad",
+    "publisher": "efdf",
+    "id": 586553,
+    "label": {
+      "title": "Game of Thrones",
+      "id": 18861385,
+      "color": "red"
+    }
   }
 ]
