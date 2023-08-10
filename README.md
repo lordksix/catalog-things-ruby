@@ -29,7 +29,7 @@
 
 # 📖 Catalog of my things<a name="about-project"></a>
 
-**Catalog of my things* is a console application we the user can create, list, save and load movies, books and music albums.
+\*_Catalog of my things_ is a console application we the user can create, list, save and load movies, books and music albums.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -62,6 +62,7 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need:
+
 - To clone or fork this repo
 - Ruby installed in your machine
 - To modify this profile you will also need a text editor
@@ -76,6 +77,7 @@ Clone this repository to your desired folder:
 ```
 
 For more information on how to clone or fork a repository:
+
 - <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">How to clone a repo</a>
 - <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">How to fork a repo</a>
 
@@ -115,6 +117,17 @@ To run tests, run the following command:
 - GitHub: [@lordksix](https://github.com/lordksix)
 - LinkedIn: [@wladpasquel](https://www.linkedin.com/in/wladpasquel/)
 - Medium: [@wladimir.pasquel](https://medium.com/@wladimir.pasquel)
+
+👤 **Ragan Hailu**
+
+- GitHub: [ragan](https://github.com/ragangithub)
+- LinkedIn: [Ragan Hailu](https://linkedin.com/in/raganhailu)
+
+👤 **Shalini Nayan**
+
+- GitHub: [@ShaliniNayan](https://github.com/ShaliniNayan)
+- Twitter: [@sndprs](https://twitter.com/sndprs)
+- LinkedIn: [shalininayan](https://www.linkedin.com/in/shalininayan/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
