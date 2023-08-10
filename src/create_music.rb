@@ -26,9 +26,7 @@ class CreateMusic < InputData
   end
 
   def music_details
-    print "\nWhat's the publish date? [year] "
-    print "\nAnswer: "
-    music_album_date = gets.chomp.to_i
+    music_album_date = get_year("'What's the publishing date? [year]'")
     print 'Is this Music Album on Spotify? [y/n]'
     print "\nAnswer: "
     spotify = gets.chomp
