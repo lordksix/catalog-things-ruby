@@ -59,7 +59,8 @@ describe Game do
     it 'get hash from game instance' do
       author1.add_item(game20002020)
       expect(game20002020.to_hash).to eql({ archived: false, first_name: 'John', id: game20002020.id, last_name: 'Doe',
-                                            last_played_at: 2020, multiplayer: false, publish_date: 2000 })
+                                            last_played_at: 2020, multiplayer: false, publish_date: 2000,
+                                            author_id: game20002020.author.id })
     end
   end
 end
