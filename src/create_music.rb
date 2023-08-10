@@ -26,9 +26,7 @@ class CreateMusic < InputData
   end
 
   def music_details
-    print "\nWhat's the publish date? [year] "
-    print "\nAnswer: "
-    music_album_date = gets.chomp.to_i
+    music_album_date = get_year("'What's the publishing date? [year]'")
     print 'Is this Music Album on Spotify? [y/n]'
     print "\nAnswer: "
     spotify = gets.chomp
@@ -39,15 +37,5 @@ class CreateMusic < InputData
                       false
                     end
     [is_on_spotify, music_album_date]
-  end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
   end
 end

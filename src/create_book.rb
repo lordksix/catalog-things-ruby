@@ -29,21 +29,9 @@ class CreateBook < InputData
     print "\nWhat's the name of the publisher?"
     print "\nAnswer: "
     publisher = gets.chomp
-    print 'What\s the publishing date? [year]'
-    print "\nAnswer: "
-    book_date = gets.chomp.to_i
+    book_date = get_year("'What's the publishing date? [year]'")
     print "What's the cover state of the book? [good/bad] "
     cover_state = gets.chomp.downcase
     [cover_state, publisher, book_date]
-  end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
   end
 end

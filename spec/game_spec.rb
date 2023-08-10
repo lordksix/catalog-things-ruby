@@ -43,6 +43,18 @@ describe Game do
     end
   end
 
+  describe 'can_be_archived?' do
+    it 'should return true' do
+      expect(game20002020.send(:can_be_archived?)).to be true
+    end
+  end
+
+  describe 'can_be_archived?' do
+    it 'should return false' do
+      expect(game20202023.send(:can_be_archived?)).to be false
+    end
+  end
+
   describe '#to_hash' do
     it 'get hash from game instance' do
       author1.add_item(game20002020)

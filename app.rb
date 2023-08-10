@@ -35,7 +35,7 @@ class App
 
   def run
     puts 'Welcome to the Catalog of your Things'
-    load_data_from_files
+    load_games_from_files
 
     load_books_from_files
 
@@ -51,7 +51,7 @@ class App
     exit_app
   end
 
-  def load_data_from_files
+  def load_games_from_files
     load_game = GamesFilesHandler.new(@games)
     @games = load_game.parse_games
   end
@@ -162,18 +162,9 @@ class App
     savemusics.save_new_music_albums
     savegame = GamesFilesHandler.new(@games)
     savegame.save_games
-    # save_book1
     savebook = BooksFilesHandler.new(@books)
     savebook.save_books
     puts 'Thank you for using this app'
-  end
-
-  def save_books
-    File.open('books.txt', 'w') do |file|
-      @books.each do |book|
-        file.puts("#{book.title}, #{book.author}, #{book.published_year}")
-      end
-    end
   end
 
   private
@@ -198,23 +189,3 @@ def list_musics
     puts "\n[#{index + 1}] (ID:#{music.id}) The Music: #{music.genre.name} has been published in #{music.publish_date}"
   end
 end
-
-def list_labels(_books, _music_albums, _games)
-  labels = []
-  @books.each do |book|
-    labels << book.label
-  end
-  @music_albums.each do |_music_albums|
-    labels << book.label
-  end
-
-  @games.each do |game|
-    labels << game.label
-  end
-  labels.each_with_index do |label, index|
-    puts "[#{index + 1}] (ID: #{label.id}) Label: #{label.title}"
-  end
-end
-
-app = App.new
-app.run

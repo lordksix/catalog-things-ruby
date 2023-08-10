@@ -16,6 +16,7 @@ class Game < Items
       publish_date: @publish_date,
       archived: @archived,
       last_played_at: @last_played_at,
+      author_id: @author.id,
       first_name: @author.first_name,
       last_name: @author.last_name
     }

@@ -36,14 +36,4 @@ class CreateGame < InputData
     end
     [publish_date, multiplayer == 'y', last_played_at]
   end
-
-  def get_year(msg)
-    puts msg
-    year = gets.chomp.to_i
-    while year < 1000 || year > 2500
-      puts msg
-      year = gets.chomp.to_i
-    end
-    year
-  end
 end

@@ -28,4 +28,14 @@ class InputData
     genre_name = gets.chomp
     [genre_name]
   end
+
+  def get_year(msg)
+    puts msg
+    year = gets.chomp.to_i
+    while year < 1 || year > 2500
+      puts msg
+      year = gets.chomp.to_i
+    end
+    year
+  end
 end
