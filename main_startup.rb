@@ -8,11 +8,8 @@ require_relative 'src/label'
 require_relative 'src/list_author'
 require_relative 'src/list_label'
 require_relative 'src/game_file_handler'
-
 require_relative 'src/book_file_handler'
-
 require_relative 'src/music_file_handler'
-
 require_relative 'src/list_genre'
 require 'json'
 
@@ -62,11 +59,11 @@ class App
   def load_books_from_files
     load_books = BooksFilesHandler.new(@Books)
     @books = load_books.parse_books
+  end
 
   def load_musics_from_files
     load_musics = MusicsFilesHandler.new(@musics_albums)
     @music_albums = load_musics.parse_music_albums
-
   end
 
   def handle_option(option)
