@@ -6,6 +6,7 @@ require_relative 'src/create_music'
 require_relative 'src/book'
 require_relative 'src/label'
 require_relative 'src/list_author'
+require_relative 'src/list_label'
 require_relative 'src/game_file_handler'
 require 'json'
 
@@ -86,7 +87,8 @@ class App
   end
 
   def handle_option_five
-    list_labels(@books, @music_albums, @games)
+    new_list = ListLabelHandler.new(@books, @music_albums, @games)
+    new_list.handle
   end
 
   def handle_option_six
