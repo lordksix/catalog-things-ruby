@@ -5,7 +5,6 @@ CREATE TABLE items (
   author_id INTEGER REFERENCES authors(id),
   archived BOOLEAN,
   publish_date DATE,
-  archived BOOLEAN
 );
 
 CREATE TABLE games(
