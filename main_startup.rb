@@ -8,6 +8,7 @@ require_relative 'src/label'
 require_relative 'src/list_author'
 require_relative 'src/list_label'
 require_relative 'src/game_file_handler'
+require_relative 'src/book_file_handler'
 require_relative 'src/list_genre'
 require 'json'
 
@@ -34,6 +35,7 @@ class App
   def run
     puts 'Welcome to the Catalog of your Things'
     load_data_from_files
+    load_books_from_files
     loop do
       display_options
       option = gets.chomp
@@ -47,6 +49,11 @@ class App
   def load_data_from_files
     load_game = GamesFilesHandler.new(@games)
     @games = load_game.parse_games
+  end
+
+  def load_books_from_files
+    load_books = BooksFilesHandler.new(@Books)
+    @books = load_books.parse_books
   end
 
   def handle_option(option)
@@ -145,6 +152,10 @@ class App
     savegame = GamesFilesHandler.new(@games)
     savegame.save_games
     # save_book1
+
+
+    savebook = BooksFilesHandler.new(@books)
+    savebook.save_books
     puts 'Thank you for using this app'
   end
 
