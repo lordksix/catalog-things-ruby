@@ -21,7 +21,7 @@ class GamesFilesHandler
       parse_games = temp_books
     else
       temp_games.each do |game|
-        temp_game = Game.new(game['publish_date'], game['publish_date'], game['last_played_at'])
+        temp_game = Game.new(game['publish_date'], game['publish_date'], game['last_played_at'], game['id'])
         temp_author = Author.new(game['first_name'], game['last_name'])
         temp_author.add_item(temp_game)
         parse_games << temp_game
