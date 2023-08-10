@@ -14,13 +14,6 @@ class ListAuthorHandler
   def list_author_create
     puts 'List of Authors:'
     authors = []
-    @books.each do |book|
-      authors << book.author
-    end
-
-    @music_albums.each do |music_album|
-      authors << music_album.author
-    end
 
     @games.each do |game|
       authors << game.author
