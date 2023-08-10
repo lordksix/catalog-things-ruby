@@ -5,6 +5,7 @@ CREATE TABLE items (
   genre_id INTEGER REFERENCES genres(id),
   author_id INTEGER REFERENCES authors(id),
   label_id INTEGER REFERENCES label(id),
+  archived BOOLEAN,
   publish_date DATE,
   archived BOOLEAN
 );
@@ -13,7 +14,6 @@ CREATE TABLE games(
   item_id SERIAL PRIMARY KEY,
   multiṕlayer BOOLEAN NOT NULL,
   last_played_at DATE NOT NULL,
-  archived BOOLEAN,
   CONSTRAINT fk_games_items FOREIGN KEY (item_id) REFERENCES items(id),
   CONSTRAINT fk_games_author FOREIGN KEY(id) REFERENCES authors(id)
 );
