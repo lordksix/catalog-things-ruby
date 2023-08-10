@@ -8,6 +8,7 @@ require_relative 'src/label'
 require_relative 'src/list_author'
 require_relative 'src/list_label'
 require_relative 'src/game_file_handler'
+require_relative 'src/list_genre'
 require 'json'
 
 class App
@@ -54,6 +55,7 @@ class App
       '1' => method(:handle_option_one),
       '2' => method(:handle_option_two),
       '3' => method(:handle_option_three),
+      '4' => method(:handle_option_four),
       '5' => method(:handle_option_five),
       '6' => method(:handle_option_six),
       '8' => method(:handle_option_eight),
@@ -84,6 +86,11 @@ class App
 
   def handle_option_three
     list_games
+  end
+
+  def handle_option_four
+    new_list = ListGenreHandler.new(@books, @music_albums, @games)
+    new_list.handle
   end
 
   def handle_option_five
